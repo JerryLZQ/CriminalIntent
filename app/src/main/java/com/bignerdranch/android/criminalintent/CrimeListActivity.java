@@ -43,4 +43,25 @@ public class CrimeListActivity extends SingleFragmentActivity
                 .findFragmentById(R.id.fragment_container);
         listFragment.updateUI();
     }
+
+    @Override
+    public void onCrimeDeleted(Crime crime) {
+        //删除记录后，需传入第一个（或者后一个/前一个）记录
+        onCrimeSelected(crime);
+    }
+
+    @Override
+    public void onCrimeAllDeleted() {
+        CrimeFragment fragment = (CrimeFragment)
+                getSupportFragmentManager()
+                        .findFragmentById(R.id.detail_fragment_container);
+        if (fragment != null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .remove(fragment)
+                    .commit();
+        }
+        // 并且更新列表页
+        onCrimeUpdated(new Crime());
+    }
 }

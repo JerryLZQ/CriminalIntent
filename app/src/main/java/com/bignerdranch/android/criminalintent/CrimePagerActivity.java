@@ -38,6 +38,16 @@ public class CrimePagerActivity extends AppCompatActivity implements CrimeFragme
     }
 
     @Override
+    public void onCrimeAllDeleted() {
+        finish();
+    }
+
+    @Override
+    public void onCrimeDeleted(Crime crime) {
+        finish();
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crime_pager);
